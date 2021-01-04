@@ -39,6 +39,10 @@ namespace AddressBookWithLinq
                             contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
                             Console.WriteLine("Enter the email = ");
                             contact.Email = Console.ReadLine();
+                            Console.WriteLine("Enter the adress book name = ");
+                            contact.AddressBookName = Console.ReadLine();
+                            Console.WriteLine("Enter the address book type = ");
+                            contact.AddressBookType = Console.ReadLine();
                             addressBook.addContact(contact);
                             break;
                         case 3:
@@ -58,6 +62,10 @@ namespace AddressBookWithLinq
                             contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
                             Console.WriteLine("Enter the email = ");
                             contact.Email = Console.ReadLine();
+                            Console.WriteLine("Enter the adress book name = ");
+                            contact.AddressBookName = Console.ReadLine();
+                            Console.WriteLine("Enter the address book type = ");
+                            contact.AddressBookType = Console.ReadLine();
                             addressBook.editContact(contact);
                             break;
                         case 4:

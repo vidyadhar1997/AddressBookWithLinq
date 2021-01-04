@@ -23,17 +23,19 @@ namespace AddressBookWithLinq
             dataTable.Columns.Add("ZipCode", typeof(int));
             dataTable.Columns.Add("PhoneNumber", typeof(long));
             dataTable.Columns.Add("Email", typeof(string));
+            dataTable.Columns.Add("AddressBookName", typeof(string));
+            dataTable.Columns.Add("AddressBookType", typeof(string));
 
-            dataTable.Rows.Add("dhiraj", "hudge", "tawarja", "latur", "maharashtra", 413512, 8149713160, "dhiraj@gmail.com");
-            dataTable.Rows.Add("suraj", "hudge", "mataji", "pune", "karnataka", 413512, 8149713160, "suraj@gmail.com");
-            dataTable.Rows.Add("nitikesh", "shinde", "tawarja", "delhi", "maharashtra", 413512, 8149713160, "nitij@gmail.com");
-            dataTable.Rows.Add("shashi", "kumar", "mataji", "latur", "maharashtra", 413512, 8149713160, "shashi@gmail.com");
-            dataTable.Rows.Add("rahul", "munde", "gandhi chowk", "beed", "up", 413562, 8148713160, "rahul@gmail.com");
-            dataTable.Rows.Add("kunal", "huge", "adarsh colony", "latur", "maharashtra", 463512, 8149713160, "kunal@gmail.com");
-            dataTable.Rows.Add("prince", "yede", "tawarja", "usmanabad", "maharashtra", 413512, 8149913160, "prince@gmail.com");
-            dataTable.Rows.Add("akash", "siesat", "tawarja", "mumbai", "kerala", 413512, 8146713160, "akash@gmail.com");
-            dataTable.Rows.Add("rohit", "kumar", "tawarja", "latur", "maharashtra", 413512, 8149713160, "rohit@gmail.com");
-            dataTable.Rows.Add("akash", "pande", "tawarja", "mumbai", "chenni", 413512, 8149713160, "dharma@gmail.com");
+            dataTable.Rows.Add("dhiraj", "hudge", "tawarja", "latur", "maharashtra", 413512, 8149713160, "dhiraj@gmail.com","FamilyBook","Family");
+            dataTable.Rows.Add("suraj", "hudge", "mataji", "pune", "karnataka", 413512, 8149713160, "suraj@gmail.com","FriendsBook","Friends");
+            dataTable.Rows.Add("nitikesh", "shinde", "tawarja", "delhi", "maharashtra", 413512, 8149713160, "nitij@gmail.com","CompanyBook","Profession");
+            dataTable.Rows.Add("shashi", "kumar", "mataji", "latur", "maharashtra", 413512, 8149713160, "shashi@gmail.com", "FamilyBook", "Family");
+            dataTable.Rows.Add("rahul", "munde", "gandhi chowk", "beed", "up", 413562, 8148713160, "rahul@gmail.com", "FriendsBook", "Friends");
+            dataTable.Rows.Add("kunal", "huge", "adarsh colony", "latur", "maharashtra", 463512, 8149713160, "kunal@gmail.com", "FamilyBook", "Family");
+            dataTable.Rows.Add("prince", "yede", "tawarja", "usmanabad", "maharashtra", 413512, 8149913160, "prince@gmail.com", "FriendsBook", "Friends");
+            dataTable.Rows.Add("akash", "siesat", "tawarja", "mumbai", "kerala", 413512, 8146713160, "akash@gmail.com", "CompanyBook","Profession");
+            dataTable.Rows.Add("rohit", "kumar", "tawarja", "latur", "maharashtra", 413512, 8149713160, "rohit@gmail.com", "FamilyBook", "Family");
+            dataTable.Rows.Add("akash", "pande", "tawarja", "mumbai", "chenni", 413512, 8149713160, "dharma@gmail.com", "CompanyBook","Profession");
         }
         
         /// <summary>
@@ -62,6 +64,8 @@ namespace AddressBookWithLinq
                 Console.WriteLine("ZipCode:-"+table.Field<int>("ZipCode"));
                 Console.WriteLine("PhoneNumber:-"+ table.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
+                Console.WriteLine("AddressBookName:-" + table.Field<string>("AddressBookName"));
+                Console.WriteLine("AddressBookType:-" + table.Field<string>("AddressBookType"));
             }
         }
         
@@ -81,6 +85,8 @@ namespace AddressBookWithLinq
                 recordData.SetField("ZipCode", contact.ZipCode);
                 recordData.SetField("PhoneNumber", contact.PhoneNumber);
                 recordData.SetField("Email", contact.Email);
+                Console.WriteLine("AddressBookName",contact.AddressBookName);
+                Console.WriteLine("AddressBookType",contact.AddressBookType);
             }
         }
         
@@ -115,6 +121,8 @@ namespace AddressBookWithLinq
                 Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
                 Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
+                Console.WriteLine("AddressBookName:-" + table.Field<string>("AddressBookName"));
+                Console.WriteLine("AddressBookType:-" + table.Field<string>("AddressBookType"));
             }
         }
         
@@ -135,6 +143,8 @@ namespace AddressBookWithLinq
                 Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
                 Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
+                Console.WriteLine("AddressBookName:-" + table.Field<string>("AddressBookName"));
+                Console.WriteLine("AddressBookType:-" + table.Field<string>("AddressBookType"));
             }
         }
         
@@ -173,6 +183,8 @@ namespace AddressBookWithLinq
                 Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
                 Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
+                Console.WriteLine("AddressBookName:-" + table.Field<string>("AddressBookName"));
+                Console.WriteLine("AddressBookType:-" + table.Field<string>("AddressBookType"));
             }
         }
     }
