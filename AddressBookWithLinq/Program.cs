@@ -12,7 +12,7 @@ namespace AddressBookWithLinq
             addressBook.createTable();
             while (true)
             {
-                Console.WriteLine("\n 1 for Display \n 2 for Add Contact \n 3 for Edit the Contact  \n 4 for Exit  \n 5 for");
+                Console.WriteLine("\n 1 for Display \n 2 for Add Contact \n 3 for Edit the Contact \n 4 for delete the Contact \n 5 for Exit");
                 int choise = Convert.ToInt32(Console.ReadLine());
                 try
                 {
@@ -60,6 +60,11 @@ namespace AddressBookWithLinq
                             addressBook.editContact(contact);
                             break;
                         case 4:
+                            Console.WriteLine("Enter the first name = ");
+                            contact.FirstName = Console.ReadLine();
+                            addressBook.deleteContact(contact);
+                            break;
+                        case 5:
                             Environment.Exit(0);
                             break;
                         default:
