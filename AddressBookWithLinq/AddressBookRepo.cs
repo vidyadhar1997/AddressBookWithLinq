@@ -31,9 +31,9 @@ namespace AddressBookWithLinq
             dataTable.Rows.Add("rahul", "munde", "gandhi chowk", "beed", "up", 413562, 8148713160, "rahul@gmail.com");
             dataTable.Rows.Add("kunal", "huge", "adarsh colony", "latur", "maharashtra", 463512, 8149713160, "kunal@gmail.com");
             dataTable.Rows.Add("prince", "yede", "tawarja", "usmanabad", "maharashtra", 413512, 8149913160, "prince@gmail.com");
-            dataTable.Rows.Add("akash", "pawar", "tawarja", "mumbai", "kerala", 413512, 8146713160, "akash@gmail.com");
+            dataTable.Rows.Add("akash", "siesat", "tawarja", "mumbai", "kerala", 413512, 8146713160, "akash@gmail.com");
             dataTable.Rows.Add("rohit", "kumar", "tawarja", "latur", "maharashtra", 413512, 8149713160, "rohit@gmail.com");
-            dataTable.Rows.Add("dharmesh", "pande", "tawarja", "chakur", "chenni", 413512, 8149713160, "dharma@gmail.com");
+            dataTable.Rows.Add("akash", "pande", "tawarja", "mumbai", "chenni", 413512, 8149713160, "dharma@gmail.com");
         }
         
         /// <summary>
@@ -97,7 +97,7 @@ namespace AddressBookWithLinq
                 Console.WriteLine("Delete contact successfully");
             }
         }
-        
+
         /// <summary>
         /// Retrieves the person by using state.
         /// </summary>
@@ -105,7 +105,7 @@ namespace AddressBookWithLinq
         public void retrievePersonByUsingState(Contact contact)
         {
             var selectdData = from dataTable in dataTable.AsEnumerable().Where(dataTable => dataTable.Field<string>("State") == contact.State) select dataTable;
-            foreach(var table in selectdData.AsEnumerable())
+            foreach(var table in selectdData)
             {
                 Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
                 Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
@@ -125,7 +125,7 @@ namespace AddressBookWithLinq
         public void retrievePersonByUsingCity(Contact contact)
         {
             var selectdData = from dataTable in dataTable.AsEnumerable().Where(dataTable => dataTable.Field<string>("City") == contact.City) select dataTable;
-            foreach (var table in selectdData.AsEnumerable())
+            foreach (var table in selectdData)
             {
                 Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
                 Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
@@ -149,10 +149,30 @@ namespace AddressBookWithLinq
                                          City = groups.Key.City,
                                          State = groups.Key.State,
                                          Count = groups.Count()
-                                        };
+                                     };
             foreach(var row in countByCityAndState)
             {
                 Console.WriteLine(row.City + "\n" + row.State + "\n" + row.Count);
+            }
+        }
+        
+        /// <summary>
+        /// Sorts the contact alphabetically for city.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        public void sortContactAlphabeticallyForGivenCity(Contact contact)
+        {
+            var records = dataTable.AsEnumerable().Where(x => x.Field<string>("City") == contact.City).OrderBy(x => x.Field<string>("FirstName")).ThenBy(x => x.Field<string>("LastName"));
+            foreach (var table in records)
+            {
+                Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
+                Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
+                Console.WriteLine("Address:-" + table.Field<string>("Address"));
+                Console.WriteLine("City:-" + table.Field<string>("City"));
+                Console.WriteLine("State:-" + table.Field<string>("State"));
+                Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
+                Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
+                Console.WriteLine("Email:-" + table.Field<string>("Email"));
             }
         }
     }

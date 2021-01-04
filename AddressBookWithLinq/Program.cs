@@ -12,7 +12,8 @@ namespace AddressBookWithLinq
             addressBook.createTable();
             while (true)
             {
-                Console.WriteLine("\n 1 for Display \n 2 for Add Contact \n 3 for Edit the Contact \n 4 for delete the Contact \n 5 for enter the state \n 6 for enter the city \n 7 for count by city and state \n 8 for exit");
+                Console.WriteLine("\n 1 for Display \n 2 for Add Contact \n 3 for Edit the Contact \n 4 for delete the Contact \n " +
+                "5 for enter the state \n 6 for enter the city \n 7 for count by city and state \n 8 Enter city for sorting \n 9 for exit");
                 int choise = Convert.ToInt32(Console.ReadLine());
                 try
                 {
@@ -78,6 +79,11 @@ namespace AddressBookWithLinq
                             addressBook.countByCityAndState();
                             break;
                         case 8:
+                            Console.WriteLine("Enter the city for sorting = ");
+                            contact.City = Console.ReadLine();
+                            addressBook.sortContactAlphabeticallyForGivenCity(contact);
+                            break;
+                        case 9:
                             Environment.Exit(0);
                             break;
                         default:
