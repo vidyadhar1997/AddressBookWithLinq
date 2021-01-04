@@ -83,6 +83,11 @@ namespace AddressBookWithLinq
                 recordData.SetField("Email", contact.Email);
             }
         }
+        
+        /// <summary>
+        /// Deletes the contact using first name.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
         public void deleteContact(Contact contact)
         {
             var recordData = dataTable.AsEnumerable().Where(data => data.Field<string>("FirstName") == contact.FirstName).First();
@@ -90,6 +95,46 @@ namespace AddressBookWithLinq
             {
                 recordData.Delete();
                 Console.WriteLine("Delete contact successfully");
+            }
+        }
+        
+        /// <summary>
+        /// Retrieves the person by using state.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        public void retrievePersonByUsingState(Contact contact)
+        {
+            var selectdData = from dataTable in dataTable.AsEnumerable().Where(dataTable => dataTable.Field<string>("State") == contact.State) select dataTable;
+            foreach(var table in selectdData.AsEnumerable())
+            {
+                Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
+                Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
+                Console.WriteLine("Address:-" + table.Field<string>("Address"));
+                Console.WriteLine("City:-" + table.Field<string>("City"));
+                Console.WriteLine("State:-" + table.Field<string>("State"));
+                Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
+                Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
+                Console.WriteLine("Email:-" + table.Field<string>("Email"));
+            }
+        }
+        
+        /// <summary>
+        /// Retrieves the person by using city.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        public void retrievePersonByUsingCity(Contact contact)
+        {
+            var selectdData = from dataTable in dataTable.AsEnumerable().Where(dataTable => dataTable.Field<string>("City") == contact.City) select dataTable;
+            foreach (var table in selectdData.AsEnumerable())
+            {
+                Console.WriteLine("\nFirstName:-" + table.Field<string>("FirstName"));
+                Console.WriteLine("LastName:-" + table.Field<string>("LastName"));
+                Console.WriteLine("Address:-" + table.Field<string>("Address"));
+                Console.WriteLine("City:-" + table.Field<string>("City"));
+                Console.WriteLine("State:-" + table.Field<string>("State"));
+                Console.WriteLine("ZipCode:-" + table.Field<int>("ZipCode"));
+                Console.WriteLine("PhoneNumber:-" + table.Field<long>("PhoneNumber"));
+                Console.WriteLine("Email:-" + table.Field<string>("Email"));
             }
         }
     }
