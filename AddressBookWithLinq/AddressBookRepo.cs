@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookWithLinq
 {
-    public class AddressBookTable
+    public class AddressBookRepo
     {
         private readonly DataTable dataTable = new DataTable();
         
         /// <summary>
-        /// Creates the Address Book table and added the new contact into the table.
+        /// Creates the Address Book table and insert the new contact into the table.
         /// </summary>
         public void createTable()
         {
@@ -36,6 +37,17 @@ namespace AddressBookWithLinq
         }
         
         /// <summary>
+        /// Add the contact.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        public void addContact(Contact contact)
+        {
+            dataTable.Rows.Add(contact.FirstName, contact.LastName, contact.Address, contact.City, 
+            contact.State, contact.ZipCode, contact.PhoneNumber, contact.Email);
+            Console.WriteLine("Added contact successfully");
+        }
+        
+        /// <summary>
         /// Displays the address book.
         /// </summary>
         public void displayAddressBook()
@@ -50,6 +62,25 @@ namespace AddressBookWithLinq
                 Console.WriteLine("ZipCode:-"+table.Field<int>("ZipCode"));
                 Console.WriteLine("PhoneNumber:-"+ table.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:-" + table.Field<string>("Email"));
+            }
+        }
+        
+        /// <summary>
+        /// Edit the contact using first name.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        public void editContact(Contact contact)
+        {
+            var recordData= dataTable.AsEnumerable().Where(data => data.Field<string>("FirstName") == contact.FirstName).First();
+            if (recordData != null)
+            {
+                recordData.SetField("LastName", contact.LastName);
+                recordData.SetField("Address", contact.Address);
+                recordData.SetField("City", contact.City);
+                recordData.SetField("State", contact.State);
+                recordData.SetField("ZipCode", contact.ZipCode);
+                recordData.SetField("PhoneNumber", contact.PhoneNumber);
+                recordData.SetField("Email", contact.Email);
             }
         }
     }
