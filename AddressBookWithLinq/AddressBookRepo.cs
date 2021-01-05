@@ -187,5 +187,22 @@ namespace AddressBookWithLinq
                 Console.WriteLine("AddressBookType:-" + table.Field<string>("AddressBookType"));
             }
         }
+        
+        /// <summary>
+        /// Get Count By AddressBookType
+        /// </summary>
+        public void getCountByAddressBookType()
+        {
+            var countData=dataTable.AsEnumerable().GroupBy(BookType => BookType.Field<string>("AddressBookType")).
+                Select(BookType => new
+                {
+                    BookType = BookType.Key,
+                    BookTypeCount = BookType.Count()
+                });
+            foreach(var list in countData)
+            {
+                Console.WriteLine("AddressBookType =" + list.BookType + " , " + "AddressBookCount = " + list.BookTypeCount);
+            }
+        }
     }
 }
