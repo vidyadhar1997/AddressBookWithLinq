@@ -27,7 +27,7 @@ namespace AddressBookWithLinq
             dataTable.Columns.Add("AddressBookType", typeof(string));
 
             dataTable.Rows.Add("dhiraj", "hudge", "tawarja", "latur", "maharashtra", 413512, 8149713160, "dhiraj@gmail.com","FamilyBook","Family");
-            dataTable.Rows.Add("suraj", "hudge", "mataji", "pune", "karnataka", 413512, 8149713160, "suraj@gmail.com","FriendsBook","Friends");
+            dataTable.Rows.Add("dhiraj", "hudge", "tawarja", "latur", "maharashtra", 413512, 8149713160, "dhiraj@gmail.com", "FriendsBook","Friends");
             dataTable.Rows.Add("nitikesh", "shinde", "tawarja", "delhi", "maharashtra", 413512, 8149713160, "nitij@gmail.com","CompanyBook","Profession");
             dataTable.Rows.Add("shashi", "kumar", "mataji", "latur", "maharashtra", 413512, 8149713160, "shashi@gmail.com", "FamilyBook", "Family");
             dataTable.Rows.Add("rahul", "munde", "gandhi chowk", "beed", "up", 413562, 8148713160, "rahul@gmail.com", "FriendsBook", "Friends");
@@ -45,7 +45,7 @@ namespace AddressBookWithLinq
         public void addContact(Contact contact)
         {
             dataTable.Rows.Add(contact.FirstName, contact.LastName, contact.Address, contact.City, 
-            contact.State, contact.ZipCode, contact.PhoneNumber, contact.Email);
+            contact.State, contact.ZipCode, contact.PhoneNumber, contact.Email,contact.AddressBookName,contact.AddressBookType);
             Console.WriteLine("Added contact successfully");
         }
         
